@@ -1,0 +1,73 @@
+<small>
+    Estas modificando los datos de {{user.name}} {{user.secondName}} {{user.lastName}} {{user.secondLastName}}
+</small>
+<form #userForm="ngForm" class="container">
+    <div class="half">
+        <mat-checkbox [(ngModel)]="viewFirstName" name="viewFirstName">
+            <label>Primer nombre</label>
+        </mat-checkbox>
+        <mat-form-field>
+            <input matInput [disabled]="!viewFirstName" [(ngModel)]="user.name" name="firstName">
+        </mat-form-field>
+        <button *ngIf="!activateSecondName" mat-stroked-button (click)="seeSecondName()" color="primary"> + Agregar segundo nombre</button>
+    </div>
+
+    <div class="half">
+        <mat-checkbox [(ngModel)]="viewLastName" name="viewLastName">
+        <label>Apellido</label>
+        </mat-checkbox>
+        
+        <mat-form-field>
+            <input matInput [disabled]="!viewLastName" [(ngModel)]="user.lastName" name="lastName">
+        </mat-form-field>
+        <button *ngIf="!activateSecondLastName" mat-stroked-button (click)="seeSecondLastName()" color="primary"> + Agregar otro apellido</button>
+    </div>
+    <!--SECOND NAME-->
+    <div class="half" *ngIf="activateSecondName">
+        <mat-checkbox [(ngModel)]="viewSecondName" name="viewSecondName">
+            <label>Segundo nombre</label>
+        </mat-checkbox>
+        <mat-form-field>
+            <input matInput [disabled]="!viewSecondName" [(ngModel)]="user.secondName" name="secondName">
+        </mat-form-field>
+    </div>
+    <div *ngIf="activateSecondName && !activateSecondLastName" class="breakpoint"></div>
+    
+   <!--SECOND NAME-->
+   <div class="half" *ngIf="activateSecondLastName">
+        <mat-checkbox [(ngModel)]="viewSecondLastName" name="viewSecondLastName">
+            <label>Segundo apellido</label>
+        </mat-checkbox>
+        <mat-form-field>
+            <input matInput [disabled]="!viewSecondLastName" [(ngModel)]="user.secondLastName" name="secondLastName">
+        </mat-form-field>
+    </div>
+    <div *ngIf="activateSecondLastName" class="breakpoint"></div>
+     
+    <div class="half">
+            <mat-checkbox [(ngModel)]="viewDocument" name="viewDocument">
+                <label>Documento de viaje</label>
+            </mat-checkbox>
+            
+            <mat-form-field class="half">
+                <mat-select [disabled]="!viewDocument" [(value)]="user.travelDocument.type" name="documentType">
+                    <mat-option value="DNI">DNI</mat-option>
+                    <mat-option value="option2">Libreta de enrolamiento</mat-option>
+                    <mat-option value="option3">Pasaporte</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="half">
+                    <input [disabled]="!viewDocument" matInput [(ngModel)]="user.travelDocument.number" name="document">
+            </mat-form-field>
+    </div>
+    <div class="half">
+        <mat-checkbox [(ngModel)]="viewBirthDay" name="viewBirthDay">
+            <label>Fecha de nacimiento</label>
+        </mat-checkbox>
+        <mat-form-field>
+            <input matInput [disabled]="!viewBirthDay" [matDatepicker]="myDatepicker" [(ngModel)]="user.birthDay" name="birthDay">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</form>
