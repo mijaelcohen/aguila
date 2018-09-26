@@ -1,5 +1,8 @@
 <mat-tab-group>
-  <mat-tab *ngFor="let user of users" label="{{user.name + ' ' + user.lastName}}">
-    <FormUser [user]="user"></FormUser>
+  <mat-tab label="Lura Gonzales">
+    <FormUser [user]="lura" [name]="'Lura Gonzales'"></FormUser>
   </mat-tab>
+  <mat-tab  label="Diego Rosquini">
+      <FormUser [user]="diego" [name]="'Diego Rosquini'"></FormUser>
+    </mat-tab>
 </mat-tab-group>

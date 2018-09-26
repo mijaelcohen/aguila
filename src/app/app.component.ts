@@ -8,5 +8,6 @@ import Users from './models/User';
 })
 export class AppComponent {
   title = 'aguila';
-  users = Users;
+  lura = Users[0];
+  diego = Users[1];
 }

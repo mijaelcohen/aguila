@@ -1,5 +1,5 @@
 <small>
-    Estas modificando los datos de {{user.name}} {{user.secondName}} {{user.lastName}} {{user.secondLastName}}
+    Estas modificando los datos de {{name}}
 </small>
 <form #userForm="ngForm" class="container">
     <div class="half">
@@ -14,13 +14,13 @@
 
     <div class="half">
         <mat-checkbox [(ngModel)]="viewLastName" name="viewLastName">
-        <label>Apellido</label>
+        <label>Primer Apellido</label>
         </mat-checkbox>
         
         <mat-form-field>
             <input matInput [disabled]="!viewLastName" [(ngModel)]="user.lastName" name="lastName">
         </mat-form-field>
-        <button *ngIf="!activateSecondLastName" mat-stroked-button (click)="seeSecondLastName()" color="primary"> + Agregar otro apellido</button>
+        <button *ngIf="!activateSecondLastName" mat-stroked-button (click)="seeSecondLastName()" color="primary"> + Agregar segundo apellido</button>
     </div>
     <!--SECOND NAME-->
     <div class="half" *ngIf="activateSecondName">

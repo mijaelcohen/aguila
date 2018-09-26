@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class FormUser {
   @Input() user : any;
+  @Input() name : string;
   viewFirstName = false
   viewLastName = false
   viewSecondName = false
